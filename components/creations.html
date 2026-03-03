@@ -36,29 +36,73 @@
     <!-- Modal Projet Ferme -->
     <div id="projectModal" class="modal">
         <div class="modal-content shadow-2xl overflow-hidden max-w-2xl bg-gray-900 border border-gray-700 rounded-3xl mx-auto my-10">
+            <!-- Bouton fermer -->
             <button id="close-modal" class="absolute top-6 right-6 z-30 bg-gray-800/90 hover:bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all">
                 <i class="fas fa-times"></i>
             </button>
+            
             <div class="p-8 md:p-12">
                 <header class="mb-10 text-left">
-                    <h2 class="text-3xl font-bold text-white mb-6">Portrait : Elise Le Scouarnec</h2>
-                    <div class="bg-gray-800/60 p-6 rounded-2xl border border-gray-700">
-                        <p class="text-xl font-bold text-indigo-400">Chargée d'opérations</p>
-                        <p class="text-gray-400 text-sm">Bordeaux Métropole</p>
+                    <span class="text-indigo-400 font-bold tracking-widest text-xs uppercase bg-indigo-500/10 px-3 py-1 rounded-full">Rencontre Professionnelle</span>
+                    <h2 class="text-3xl font-bold mt-4 mb-6 text-white">Portrait : Elise Le Scouarnec</h2>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-6 bg-gray-800/60 p-6 rounded-2xl border border-gray-700">
+                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg flex-shrink-0 text-white">EL</div>
+                        <div>
+                            <p class="text-xl font-bold text-white leading-tight">Elise Le Scouarnec</p>
+                            <p class="text-indigo-300 text-sm font-medium">Chargée d'opérations au pôle territoire ouest</p>
+                            <p class="text-gray-500 text-xs mt-1 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Bordeaux Métropole</p>
+                        </div>
                     </div>
                 </header>
-                <div class="space-y-8 text-gray-300">
-                    <div class="border-l-2 border-indigo-500 pl-4">
-                        <p class="font-bold text-white mb-2 underline">Parcours :</p>
-                        <p>10 ans dans le tourisme, reconversion dans le bâtiment, aujourd'hui dans l'aménagement urbain.</p>
+
+                <!-- Texte complet de l'entretien -->
+                <div class="space-y-12 text-gray-300 text-lg leading-relaxed">
+                    <div class="space-y-4">
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <span class="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 text-xs">01</span>
+                            Qu'est-ce que tu fais comme métier ?
+                        </h4>
+                        <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50 shadow-inner">
+                            <p>Chargée d'opérations au sein du service aménagement urbain.</p>
+                        </div>
                     </div>
-                    <div class="border-l-2 border-indigo-500 pl-4">
-                        <p class="font-bold text-white mb-2 underline">Son conseil :</p>
-                        <p>"Les compétences techniques s'acquièrent, mais la gestion de projet et l'adaptabilité sont universelles."</p>
+
+                    <div class="space-y-4">
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <span class="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 text-xs">02</span>
+                            Quelles études as-tu fait avant ?
+                        </h4>
+                        <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50 shadow-inner space-y-4">
+                            <p>J'ai fait des études dans le tourisme. Rien à voir, ouais. J'ai fait des études dans le tourisme, j'ai travaillé 10 ans dans le tourisme, après j'ai fait une reconversion professionnelle pour travailler dans le bâtiment.</p>
+                            <p class="text-gray-400 text-base">Je m'occupais des diagnostics des polluants des bâtiments, de l'environnement thermique, etc. Et il y a un an et demi, j'ai intégré le service aménagement urbain. Donc, je n'ai pas du tout des études dans ce domaine-là.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <span class="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 text-xs">03</span>
+                            As-tu fait une formation pour ce poste ?
+                        </h4>
+                        <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50 shadow-inner space-y-4">
+                            <p>Non. Je suis arrivée comme ça. En fait, avec mon ancien métier dans le bâtiment, il y avait beaucoup de choses transverses. J’avais un métier technique, je savais gérer des plannings, j'avais plusieurs types d'interlocuteurs, j'étais chef de projet.</p>
+                            <p class="text-gray-400 text-base italic">Mais je n'ai pas fait de formation spécifique pour rentrer ici. J'ai fait une formation "en suivant" ici, mais pas pour rentrer. J'en suis sortie il y a deux mois.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pb-12">
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <span class="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 text-xs">04</span>
+                            Quel était ton métier précédent ?
+                        </h4>
+                        <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50 shadow-inner">
+                            <p>J'étais directrice d'agence dans une société qui s'appelle APAV. C'est un bureau de contrôle technique de bâtiment.</p>
+                        </div>
                     </div>
                 </div>
+
                 <div class="mt-10 pt-6 border-t border-gray-800 text-center">
-                    <button onclick="closeProjectModal()" class="text-indigo-400 hover:text-white transition">Fermer la lecture</button>
+                    <button onclick="closeProjectModal()" class="text-indigo-400 hover:text-white transition font-bold uppercase text-sm tracking-widest">Fermer la lecture</button>
                 </div>
             </div>
         </div>
