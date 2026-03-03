@@ -26,19 +26,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #6366f1;
-            border: 4px solid #1f2937;
-        }
-
-        /* Modal Styles */
+        /* Modal Styles Améliorés */
         .modal {
             display: none;
             position: fixed;
@@ -59,14 +47,41 @@
         }
 
         .modal-content {
-            max-height: 90vh;
-            overflow-y: auto;
+            width: 100%;
+            max-width: 42rem; /* max-w-2xl */
+            max-height: 85vh; /* Hauteur max de la fenêtre */
+            background: #111827; /* bg-gray-900 */
+            border: 1px solid #374151; /* border-gray-700 */
+            border-radius: 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
             transform: scale(0.95);
             transition: transform 0.3s ease;
         }
 
         .modal.active .modal-content {
             transform: scale(1);
+        }
+
+        /* Barre de défilement personnalisée pour l'entretien */
+        .scroll-area {
+            overflow-y: auto;
+            flex: 1;
+            padding: 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #4f46e5 #111827;
+        }
+
+        .scroll-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-area::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        .scroll-area::-webkit-scrollbar-thumb {
+            background-color: #4f46e5;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -125,7 +140,7 @@
                     </div>
                 </div>
 
-                <!-- Autres projets (statiques pour l'exemple) -->
+                <!-- Autres projets statiques -->
                 <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 opacity-70 grayscale hover:grayscale-0 transition-all">
                     <div class="aspect-video bg-gray-800 relative">
                         <img src="https://images.unsplash.com/photo-1541462608141-ad43d055c4e5?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover">
@@ -151,24 +166,24 @@
 
     <!-- Modal Projet Ferme -->
     <div id="projectModal" class="modal">
-        <div class="modal-content bg-gray-900 border border-gray-700 w-full max-w-2xl rounded-3xl shadow-2xl relative overflow-hidden">
-            <!-- Bouton fermer -->
-            <button id="close-modal" class="absolute top-6 right-6 z-10 bg-gray-800/80 hover:bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+        <div class="modal-content shadow-2xl">
+            <!-- Bouton fermer fixe en haut -->
+            <button id="close-modal" class="absolute top-4 right-4 z-20 bg-gray-800/80 hover:bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all">
                 <i class="fas fa-times"></i>
             </button>
             
-            <!-- Contenu -->
-            <div class="p-8 md:p-12">
-                <header class="mb-10 text-center md:text-left">
+            <!-- Zone de défilement -->
+            <div class="scroll-area">
+                <header class="mb-10 pt-4">
                     <span class="text-indigo-400 font-bold tracking-widest text-xs uppercase bg-indigo-500/10 px-3 py-1 rounded-full">Rencontre Professionnelle</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6">Portrait : Elise Le Scouarnec</h2>
+                    <h2 class="text-3xl font-bold mt-4 mb-6">Portrait : Elise Le Scouarnec</h2>
                     
-                    <div class="flex flex-col md:flex-row items-center gap-6 bg-gray-800/40 p-6 rounded-2xl border border-gray-700">
-                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg">EL</div>
+                    <div class="flex flex-col sm:flex-row items-center gap-6 bg-gray-800/40 p-6 rounded-2xl border border-gray-700">
+                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg flex-shrink-0 text-white">EL</div>
                         <div>
                             <p class="text-xl font-bold text-white">Elise Le Scouarnec</p>
                             <p class="text-indigo-300 font-medium">Chargée d'opérations au pôle territoire ouest</p>
-                            <p class="text-gray-500 text-sm mt-1 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Bordeaux Métropole</p>
+                            <p class="text-gray-500 text-sm mt-1 flex items-center"><i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i> Bordeaux Métropole</p>
                         </div>
                     </div>
                 </header>
@@ -176,7 +191,9 @@
                 <div class="space-y-10 text-gray-300 text-lg leading-relaxed">
                     <!-- Q1 -->
                     <div class="space-y-3">
-                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-tighter">● Quel est ton métier ?</h4>
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <i class="fas fa-question-circle mr-2"></i> Quel est ton métier ?
+                        </h4>
                         <div class="bg-gray-800/30 p-5 rounded-xl border-l-4 border-indigo-500">
                             <p>Chargée d'opérations au sein du service aménagement urbain.</p>
                         </div>
@@ -184,7 +201,9 @@
 
                     <!-- Q2 -->
                     <div class="space-y-3">
-                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-tighter">● Quel a été ton parcours d'études ?</h4>
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <i class="fas fa-graduation-cap mr-2"></i> Quel a été ton parcours d'études ?
+                        </h4>
                         <div class="bg-gray-800/30 p-5 rounded-xl border-l-4 border-indigo-500 space-y-4">
                             <p>J'ai fait des études dans le tourisme. Rien à voir, ouais. J'ai travaillé 10 ans dans le tourisme, après j'ai fait une reconversion professionnelle pour travailler dans le bâtiment.</p>
                             <p class="text-gray-400 text-base">Je m'occupais des diagnostics des polluants des bâtiments, de l'environnement thermique, etc. Et il y a un an et demi, j'ai intégré le service aménagement urbain. Donc, je n'ai pas du tout des études dans ce domaine-là.</p>
@@ -193,24 +212,24 @@
 
                     <!-- Q3 -->
                     <div class="space-y-3">
-                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-tighter">● As-tu fait une formation spécifique pour ce poste ?</h4>
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i> As-tu fait une formation spécifique ?
+                        </h4>
                         <div class="bg-gray-800/30 p-5 rounded-xl border-l-4 border-indigo-500 space-y-4">
                             <p>Non. Je suis arrivée comme ça. En fait, avec mon ancien métier dans le bâtiment, il y avait beaucoup de choses transverses. J’avais un métier technique, je savais gérer des plannings, j'avais plusieurs types d'interlocuteurs, j'étais chef de projet.</p>
-                            <p class="text-gray-400 text-base italic">C'était des compétences transverses. Mais je n'ai pas fait de formation spécifique pour rentrer ici. J'ai fait une formation "en suivant", mais pas pour rentrer.</p>
+                            <p class="text-gray-400 text-base italic">C'était des compétences transverses. Mais je n'ai pas fait de formation spécifique pour rentrer ici. J'ai fait une formation "en suivant", mais pas pour rentrer. J'en suis sortie il y a deux mois.</p>
                         </div>
                     </div>
 
                     <!-- Q4 -->
-                    <div class="space-y-3">
-                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-tighter">● Ton métier juste avant celui-ci ?</h4>
+                    <div class="space-y-3 pb-8">
+                        <h4 class="text-indigo-400 font-bold uppercase text-sm tracking-widest flex items-center">
+                            <i class="fas fa-history mr-2"></i> Ton métier juste avant celui-ci ?
+                        </h4>
                         <div class="bg-gray-800/30 p-5 rounded-xl border-l-4 border-indigo-500">
                             <p>J'étais directrice d'agence dans une société qui s'appelle APAV. C'est un bureau de contrôle technique de bâtiment.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <button onclick="closeProjectModal()" class="text-gray-500 hover:text-white underline text-sm">Fermer la fenêtre</button>
                 </div>
             </div>
         </div>
@@ -218,24 +237,27 @@
 
     <!-- Section À Propos -->
     <section id="about" class="py-24 px-6 md:px-24">
-        <!-- Contenu similaire à la version précédente mais épuré -->
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="bg-gray-800 rounded-3xl h-96 flex items-center justify-center border border-gray-700 overflow-hidden shadow-2xl">
-                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+            <div class="bg-gray-800 rounded-3xl h-96 flex items-center justify-center border border-gray-700 overflow-hidden shadow-2xl relative">
+                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80" alt="Profil">
+                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             </div>
             <div>
                 <h2 class="text-3xl font-bold mb-6">À propos de <span class="text-indigo-500">moi</span></h2>
+                <p class="text-gray-400 leading-relaxed mb-6 italic">
+                    "Les compétences ne sont pas figées, elles sont transverses."
+                </p>
                 <p class="text-gray-400 leading-relaxed mb-6">
-                    Étudiant avec un intérêt marqué pour les problématiques urbaines et les outils de demain. Je crois en la force des compétences transverses pour mener à bien des projets complexes.
+                    Étudiant avec un intérêt marqué pour les problématiques urbaines. À travers mes projets, j'explore comment l'aménagement et le numérique peuvent transformer notre quotidien.
                 </p>
                 <div class="flex gap-4">
                      <div class="bg-gray-800 p-4 rounded-2xl flex-1 text-center border border-gray-700">
                          <p class="text-2xl font-black text-indigo-500">3+</p>
-                         <p class="text-xs uppercase text-gray-500 font-bold">Projets</p>
+                         <p class="text-xs uppercase text-gray-400 font-bold">Projets</p>
                      </div>
                      <div class="bg-gray-800 p-4 rounded-2xl flex-1 text-center border border-gray-700">
                          <p class="text-2xl font-black text-purple-500">2</p>
-                         <p class="text-xs uppercase text-gray-500 font-bold">Diplômes</p>
+                         <p class="text-xs uppercase text-gray-400 font-bold">Diplômes</p>
                      </div>
                 </div>
             </div>
@@ -244,7 +266,7 @@
 
     <!-- Footer -->
     <footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm">
-        <p>© 2024 Portfolio Étudiant. Réalisé avec soin.</p>
+        <p>© 2024 Portfolio Étudiant. Tous droits réservés.</p>
     </footer>
 
     <script>
@@ -252,7 +274,6 @@
         const btnFerme = document.getElementById('btn-ferme');
         const btnClose = document.getElementById('close-modal');
 
-        // Fonction ouvrir
         function openProjectModal() {
             modal.style.display = 'flex';
             setTimeout(() => {
@@ -261,7 +282,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Fonction fermer
         function closeProjectModal() {
             modal.classList.remove('active');
             setTimeout(() => {
@@ -270,18 +290,15 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Événements
         btnFerme.addEventListener('click', openProjectModal);
         btnClose.addEventListener('click', closeProjectModal);
 
-        // Fermer au clic extérieur
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeProjectModal();
             }
         });
 
-        // Fermer avec la touche Echap
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeProjectModal();
